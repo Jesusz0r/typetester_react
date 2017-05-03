@@ -11,7 +11,7 @@ class FontContainer extends Component {
 					'styles': {
 						'fontFamily': 'Roboto',
 						'fontSize': 12,
-						'fontWeight': 400,
+						'fontWeight': '400',
 						'fontStyle': 'normal',
 						'fontVariant': 'normal'
 					}
@@ -20,7 +20,7 @@ class FontContainer extends Component {
 					'styles': {
 						'fontFamily': 'Open Sans',
 						'fontSize': 12,
-						'fontWeight': 400,
+						'fontWeight': '400',
 						'fontStyle': 'normal',
 						'fontVariant': 'normal'
 					}
@@ -29,7 +29,7 @@ class FontContainer extends Component {
 					'styles': {
 						'fontFamily': 'Lato',
 						'fontSize': 12,
-						'fontWeight': 400,
+						'fontWeight': '400',
 						'fontStyle': 'normal',
 						'fontVariant': 'normal'
 					}
@@ -51,14 +51,10 @@ class FontContainer extends Component {
 	}
 
 	_makeBold(index) {
-		const newState = this.state.fonts.filter((currFont) => {
-			return currFont.styles.fontFamily !== this.state.fonts[index].styles.fontFamily;
-		});
-
-		const newFontStyles = this.state.fonts[index];
-		console.log(newFontStyles);
-		newFontStyles.styles.fontWeight === 400 ? newFontStyles.styles.fontWeight = 700 : newFontStyles.styles.fontWeight = 400;
-		newState.push(newFontStyles);
+		const newState = [].concat(this.state.fonts);
+		const newStyle = Object.assign({}, newState[index].styles);
+		newStyle.fontWeight === '400' ? newStyle.fontWeight = '700' : newStyle.fontWeight = '400';
+		newState[index].styles = newStyle;
 
 		this.setState({
 			fonts: newState
