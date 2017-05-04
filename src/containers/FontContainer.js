@@ -40,7 +40,7 @@ class FontContainer extends Component {
 			]
 		};
 
-		this._makeBold = this._makeBold.bind(this);
+		this._changeWeight = this._changeWeight.bind(this);
 		this._makeItalic = this._makeItalic.bind(this);
 		this._textAlign = this._textAlign.bind(this);
 		this._textSize = this._textSize.bind(this);
@@ -54,7 +54,7 @@ class FontContainer extends Component {
 
 				<FontComponent
 					fonts={this.state.fonts}
-					makeBold={this._makeBold}
+					changeWeight={this._changeWeight}
 					textAlign={this._textAlign}
 					makeItalic={this._makeItalic}
 					textSize={this._textSize}
@@ -64,10 +64,10 @@ class FontContainer extends Component {
 		);
 	}
 
-	_makeBold(index) {
+	_changeWeight(index, weight) {
 		const newState = [].concat(this.state.fonts);
 		const newStyle = Object.assign({}, this.state.fonts[index].styles);
-		newStyle.fontWeight === '400' ? newStyle.fontWeight = '700' : newStyle.fontWeight = '400';
+		newStyle.fontWeight === weight ? newStyle.fontWeight = '400' : newStyle.fontWeight = weight;
 		newState[index].styles = newStyle;
 
 		this.setState({
