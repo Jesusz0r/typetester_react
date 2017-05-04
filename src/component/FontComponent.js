@@ -20,6 +20,9 @@ const FontComponent = (props) => {
 						<i className="fa fa-text-height fa-lg" aria-hidden="true">
 							<input type="range" value={font.styles.lineHeight} min="1" max="2" step="0.05" onChange={(e) => props.lineHeight(e, index)}/>
 						</i>
+						<i className="fa fa-text-width fa-lg" aria-hidden="true">
+							<input type="range" value={font.styles.letterSpacing} min="0" max="5" step="0.05" onChange={(e) => props.fontSpacing(e, index)}/>
+						</i>
 					</div>
 
 					<div style={{"fontFamily": font.styles.fontFamily}}>

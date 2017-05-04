@@ -14,7 +14,8 @@ class FontContainer extends Component {
 						'fontWeight': '400',
 						'fontStyle': 'normal',
 						'fontVariant': 'normal',
-						'lineHeight': 1
+						'lineHeight': 1,
+						'letterSpacing': 0
 					}
 				},
 				{
@@ -24,7 +25,8 @@ class FontContainer extends Component {
 						'fontWeight': '400',
 						'fontStyle': 'normal',
 						'fontVariant': 'normal',
-						'lineHeight': 1
+						'lineHeight': 1,
+						'letterSpacing': 0
 					}
 				},
 				{
@@ -34,7 +36,8 @@ class FontContainer extends Component {
 						'fontWeight': '400',
 						'fontStyle': 'normal',
 						'fontVariant': 'normal',
-						'lineHeight': 1
+						'lineHeight': 1,
+						'letterSpacing': 0
 					}
 				}
 			]
@@ -45,6 +48,7 @@ class FontContainer extends Component {
 		this._textAlign = this._textAlign.bind(this);
 		this._textSize = this._textSize.bind(this);
 		this._lineHeight = this._lineHeight.bind(this);
+		this._fontSpacing = this._fontSpacing.bind(this);
 	}
 
 	render() {
@@ -59,6 +63,7 @@ class FontContainer extends Component {
 					makeItalic={this._makeItalic}
 					textSize={this._textSize}
 					lineHeight={this._lineHeight}
+					fontSpacing={this._fontSpacing}
 				/>;
 			</div>
 		);
@@ -112,6 +117,17 @@ class FontContainer extends Component {
 		const newState = [].concat(this.state.fonts);
 		const newStyle = Object.assign({}, this.state.fonts[index].styles);
 		newStyle.lineHeight = Number(e.target.value);
+		newState[index].styles = newStyle;
+
+		this.setState({
+			fonts: newState
+		});
+	}
+
+	_fontSpacing(e, index) {
+		const newState = [].concat(this.state.fonts);
+		const newStyle = Object.assign({}, this.state.fonts[index].styles);
+		newStyle.letterSpacing = Number(e.target.value);
 		newState[index].styles = newStyle;
 
 		this.setState({
